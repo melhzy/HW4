@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Models.IndivDemographics>
+@using GridMvc.Html
+
+<h3>@ViewBag.Message</h3>
+
+<div>
+    @if (Model != null && Model.Count() > 0)
+    {
+        <div class="panel panel-primary pre-scrollable">
+            @Html.Grid(Model).Named("IndividualDemographicsData").Columns(columns =>
+            {
+                columns.Add(col => col.FirstName).Titled("First Name");
+                columns.Add(col => col.LastName).Titled("Last Name");
+                columns.Add(col => col.Sex).Titled("Sex");
+                columns.Add(col => col.Address).Titled("Address");
+            }).WithPaging(3).Sortable()
+        </div>
+    }
+</div>

@@ -1,0 +1,4 @@
+C:\Users\Mel\Dropbox\HU\ISEM-551-50\HW4\HW4_MultiLayerDatabaseData\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\Mel\Dropbox\HU\ISEM-551-50\HW4\HW4_MultiLayerDatabaseData\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\Mel\Dropbox\HU\ISEM-551-50\HW4\HW4_MultiLayerDatabaseData\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\Mel\Dropbox\HU\ISEM-551-50\HW4\HW4_MultiLayerDatabaseData\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
