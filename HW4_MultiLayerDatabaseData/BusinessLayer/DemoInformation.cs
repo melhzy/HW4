@@ -11,13 +11,15 @@ namespace BusinessLayer
 {
     public class DemoInformation
     {
-        public static List<IndivDemographics> GetDemoData()
+                public static List<IndivDemographics> GetDemoData()
         {
             IndivDemographics IndivDemo = new IndivDemographics();
             var IndivDemoList = new List<IndivDemographics>();
             DataSet dsGetDemographicsReport = new DataSet();
-            dsGetDemographicsReport = DADemoInformation.GetDemographics();
 
+            //dsGetDemographicsReport = DADemoInformation.GetDemographics();
+            //dsGetDemographicsReport = DADemoInformation.GetDemographicsUsingDBWithOutConfig();
+            dsGetDemographicsReport = DADemoInformation.GetDemographicsUsingDBWithConfig();
             if (dsGetDemographicsReport.Tables.Count > 0)
             {
                 IndivDemoList = dsGetDemographicsReport.Tables[0].AsEnumerable().Select(m => new IndivDemographics

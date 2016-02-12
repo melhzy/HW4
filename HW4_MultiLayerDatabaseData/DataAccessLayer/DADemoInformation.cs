@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace DataAccessLayer
 {
@@ -68,6 +70,63 @@ namespace DataAccessLayer
             dt.Rows.Add(dr);
 
             dsGetDemographicsReport.Tables.Add(dt);
+
+            return dsGetDemographicsReport;
+        }
+
+        public static DataSet GetDemographicsUsingDBWithConfig()
+        {
+
+            SqlConnection cnn;
+            string sql = null;
+            SqlCommand command;
+            SqlDataReader dataReader;
+            DataTable dt = new DataTable();
+            DataSet dsGetDemographicsReport = new DataSet();
+
+            string cs = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            cnn = new SqlConnection(cs);
+            sql = "Select * from IndividualDemographics";
+
+            //Open the connection
+            cnn.Open();
+            command = new SqlCommand(sql, cnn);
+            dataReader = command.ExecuteReader();
+            dt.Load(dataReader);
+            dsGetDemographicsReport.Tables.Add(dt);
+            dataReader.Close();
+            command.Dispose();
+            cnn.Close();
+
+            return dsGetDemographicsReport;
+        }
+
+        //Get the demographics from database but define the connection string in this method
+        public static DataSet GetDemographicsUsingDBWithOutConfig()
+        {
+            string connetionString = null;
+
+            SqlConnection cnn;
+            string sql = null;
+            SqlCommand command;
+            SqlDataReader dataReader;
+            DataTable dt = new DataTable();
+            DataSet dsGetDemographicsReport = new DataSet();
+
+            connetionString = "Data Source=MELSACERINNJ;Initial Catalog=employee;Integrated Security=SSPI;";
+            cnn = new SqlConnection(connetionString);
+
+            sql = "Select * from IndividualDemographics";
+
+            //Open the connection
+            cnn.Open();
+            command = new SqlCommand(sql, cnn);
+            dataReader = command.ExecuteReader();
+            dt.Load(dataReader);
+            dsGetDemographicsReport.Tables.Add(dt);
+            dataReader.Close();
+            command.Dispose();
+            cnn.Close();
 
             return dsGetDemographicsReport;
         }
